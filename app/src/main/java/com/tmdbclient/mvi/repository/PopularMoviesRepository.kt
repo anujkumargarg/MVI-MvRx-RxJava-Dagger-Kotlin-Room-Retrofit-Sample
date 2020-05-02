@@ -1,5 +1,6 @@
 package com.tmdbclient.mvi.repository
 
+import com.tmdbclient.mvi.Constants.API_KEY
 import com.tmdbclient.mvi.api.MoviesApi
 import com.tmdbclient.mvi.model.Movie
 import com.tmdbclient.mvi.room.PopularMoviesDao
@@ -24,8 +25,8 @@ class PopularMoviesRepository @Inject constructor(
 
     fun clearPopularMovies() {
         Observable.fromCallable {
-             popularMoviesDao.deleteAll()
-        }.subscribeOn(Schedulers.io()).subscribe{
+            popularMoviesDao.deleteAll()
+        }.subscribeOn(Schedulers.io()).subscribe {
 
         }.disposeOnClear()
     }
@@ -36,14 +37,10 @@ class PopularMoviesRepository @Inject constructor(
         }.subscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
             .subscribe {
-            it?.let { movies ->
-                popularMoviesDao.insertPopularMovies(movies)
-            }
-        }.disposeOnClear()
-    }
-
-    companion object {
-        const val API_KEY = "API_KEY"
+                it?.let { movies ->
+                    popularMoviesDao.insertPopularMovies(movies)
+                }
+            }.disposeOnClear()
     }
 
     fun clear() {

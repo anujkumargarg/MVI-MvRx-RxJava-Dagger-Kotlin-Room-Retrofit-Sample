@@ -24,7 +24,8 @@ class MovieResponse {
 }
 
 @Entity(tableName = "movies")
-class Movie { @SerializedName("popularity")
+class Movie {
+    @SerializedName("popularity")
     var popularity: Double? = null
     @SerializedName("vote_count")
     @Expose

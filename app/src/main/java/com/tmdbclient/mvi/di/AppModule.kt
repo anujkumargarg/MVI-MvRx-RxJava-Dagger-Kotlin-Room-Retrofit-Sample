@@ -3,6 +3,7 @@ package com.tmdbclient.mvi.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.room.Room
+import com.squareup.inject.assisted.dagger2.AssistedModule
 import com.tmdbclient.mvi.App
 import com.tmdbclient.mvi.Constants.BASE_URL
 import com.tmdbclient.mvi.room.AppDatabase
@@ -14,7 +15,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Provider
 import javax.inject.Singleton
 
-@Module
+@AssistedModule
+@Module(includes = [AssistedInject_AppModule::class])
 class AppModule {
 
     @Singleton
@@ -35,6 +37,7 @@ class AppModule {
             AppDatabase::class.java, "movies.db"
         ).build()
     }
+/*
 
     @Singleton
     @Provides
@@ -44,4 +47,5 @@ class AppModule {
                 return requireNotNull(providerMap[modelClass]).get() as T
             }
         }
+*/
 }

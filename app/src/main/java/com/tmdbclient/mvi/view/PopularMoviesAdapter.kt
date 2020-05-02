@@ -13,7 +13,8 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_view_popular_movie.*
 import javax.inject.Inject
 
-class PopularMoviesAdapter @Inject constructor() : RecyclerView.Adapter<PopularMoviesAdapter.PopularMoviesHolder>() {
+class PopularMoviesAdapter @Inject constructor() :
+    RecyclerView.Adapter<PopularMoviesAdapter.PopularMoviesHolder>() {
     private var moviesList: List<Movie> = mutableListOf()
 
     fun updateMovieList(newList: List<Movie>) {

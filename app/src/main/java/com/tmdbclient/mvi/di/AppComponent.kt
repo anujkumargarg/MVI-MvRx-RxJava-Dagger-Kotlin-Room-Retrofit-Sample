@@ -13,12 +13,12 @@ import javax.inject.Singleton
 @Component(
     modules = [AndroidSupportInjectionModule::class, ActivityBuilderModule::class, AppModule::class, MoviesViewModelModule::class, MoviesModule::class]
 )
-interface AppComponent: AndroidInjector<App>{
+interface AppComponent : AndroidInjector<App> {
 
     @Component.Builder
     interface Builder {
         @BindsInstance
-        fun injectApplication(app: App):Builder
+        fun injectApplication(app: App): Builder
 
         fun build(): AppComponent
     }
